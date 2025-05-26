@@ -5,6 +5,8 @@ Checks:
 cmsrel CMSSW_13_3_3
 cd CMSSW_13_3_3/src
 cmsenv
+mkdir LHEWeightsReader
+cd LHEWeightsReader
 
 git clone https://github.com/NielsVdBossche/LHEWeightsReader
 
