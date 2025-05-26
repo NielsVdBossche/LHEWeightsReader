@@ -1,13 +1,16 @@
-    cmsrel CMSSW_10_2_3
+Checks:
+1. Make sure you have a valid proxy
 
-    cd CMSSW_10_2_3/src
+```bash
+cmsrel CMSSW_13_3_3
+cd CMSSW_13_3_3/src
+cmsenv
 
-    cmsenv
+git clone https://github.com/NielsVdBossche/LHEWeightsReader
 
-    git clone https://github.com/lviliani/LHEWeightsReader.git
+scram b -j 10
+cd LHEWeightsReader/test/
+cmsRun lheWeightReader_cfg.py inputFiles="MINIAOD_FILE"
+```
 
-    scram b
-
-    cd LHEWeightsReader/test/
-
-    cmsRun lheWeightReader_cfg.py inputFiles="MINIAOD_FILE"
+The changes for CMSSW 13 should be the same as for CMSSW 12 and also 14+ versions unless something gets deprecated in the EDAnalyzer object in the future.

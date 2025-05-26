@@ -4,12 +4,11 @@
 //
 
 // system include files
-#include <memory>
 #include <iostream>
 
 // user include files
 #include "FWCore/Framework/interface/Frameworkfwd.h"
-#include "FWCore/Framework/interface/EDAnalyzer.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
 
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
@@ -23,7 +22,7 @@
 // class declaration
 //
 
-class LHEWeightsReader : public edm::EDAnalyzer {
+class LHEWeightsReader : public edm::one::EDAnalyzer<edm::one::WatchRuns, edm::one::SharedResources> {
    public:
       explicit LHEWeightsReader(const edm::ParameterSet&);
       ~LHEWeightsReader();
@@ -32,6 +31,7 @@ class LHEWeightsReader : public edm::EDAnalyzer {
 
 
    private:
+      void beginRun(edm::Run const&, edm::EventSetup const&) override {};
       void analyze(const edm::Event&, const edm::EventSetup&) override;
       void endRun(edm::Run const&, edm::EventSetup const&) override;
 
